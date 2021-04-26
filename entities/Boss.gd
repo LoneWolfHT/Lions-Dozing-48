@@ -18,7 +18,7 @@ func _ready():
 
 	for child in get_children():
 		if child.is_in_group("bullet_launcher"):
-			assert(self.connect("boss_started", child, "_boss_started") == OK, "Failed to connect to child bulletlauncher")
+			self.connect("boss_started", child, "_boss_started")
 
 func _on_boss_start():
 	emit_signal("boss_started")

@@ -26,8 +26,8 @@ aseprite_executable_path="aseprite"
 
 [autoload]
 
-Sounds="*res://entities/Sounds.tscn"
 Global="*res://util/global.gd"
+Sounds="*res://entities/Sounds.tscn"
 
 [display]
 

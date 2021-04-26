@@ -21,9 +21,9 @@ func _ready():
 
 	assert(BOSS, "You have to link the healthbar to a boss!")
 	for nodepath in START_TRIGGERS:
-		assert(self.connect("on_boss_start", get_node(nodepath), "_on_boss_start") == OK)
+		self.connect("on_boss_start", get_node(nodepath), "_on_boss_start")
 	for nodepath in DEATH_TRIGGERS:
-		assert(self.connect("on_boss_death", get_node(nodepath), "_on_boss_death") == OK)
+		self.connect("on_boss_death", get_node(nodepath), "_on_boss_death")
 
 func _process(_delta):
 	if STOP:

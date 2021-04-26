@@ -87,6 +87,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+button_name = "play"
 load_scene = "res://scenes/Questions.tscn"
 
 [node name="ExitButton" type="Button" parent="."]

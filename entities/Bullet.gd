@@ -26,4 +26,4 @@ func _on_collide(node):
 
 func _on_NewGameTimer_timeout():
 	get_tree().paused = false
-	assert(get_tree().change_scene(POST_DEATH_SCENE) == OK, "Failed to switch to post-death scene")
+	get_tree().change_scene(POST_DEATH_SCENE)

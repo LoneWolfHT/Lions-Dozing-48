@@ -8,10 +8,10 @@ func _ready():
 	if typeof(signal_target) == TYPE_NODE_PATH:
 		signal_target = get_node(signal_target)
 
-	assert(self.connect("button_up", signal_target, "_on_button_activate", [ button_name ]) == OK, "[util->buttonpress]: Failed to connect signal to given node")
+	connect("button_up", signal_target, "_on_button_activate", [ button_name ])
 
 	if load_scene:
-		assert(self.connect("button_up", self, "_on_loadscene_request", [ load_scene ]) == OK, "Failed to connect sceneload func to buttonpress signal")
+		connect("button_up", self, "_on_loadscene_request", [ load_scene ])
 
 	print("[util->buttonpress]: Loaded")
 
@@ -19,4 +19,4 @@ func _on_button_activate(_button):
 	pass
 
 func _on_loadscene_request(scenepath):
-	assert(get_tree().change_scene(scenepath) == OK, "Failed to change scene on buttonpress")
+	get_tree().change_scene(scenepath)
