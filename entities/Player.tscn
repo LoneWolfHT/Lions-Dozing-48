@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Player.aseprite" type="SpriteFrames" id=1]
+[ext_resource path="res://entities/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/swoosh.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/hit_metal.wav" type="AudioStream" id=4]
+[ext_resource path="res://util/soundsetter.gd" type="Script" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.7199
+height = 0.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16.0989, 12.5 )
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 1.4, 1.4 )
+z_index = 10
+script = ExtResource( 2 )
+POST_DEATH_SCENE = "res://scenes/Questions.tscn"
+
+[node name="Anim" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "Idle"
+playing = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.266, 1 )
+shape = SubResource( 1 )
+
+[node name="StabArea" type="Area2D" parent="."]
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+collision_layer = 0
+collision_mask = 2
+
+[node name="Area" type="CollisionShape2D" parent="StabArea"]
+position = Vector2( 0, -15 )
+shape = SubResource( 2 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+pitch_scale = 1.49
+script = ExtResource( 5 )
+
+[node name="HitMetal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 0.96
+script = ExtResource( 5 )
+[connection signal="animation_finished" from="Anim" to="." method="_anim_finished"]
+[connection signal="area_entered" from="StabArea" to="." method="_on_StabArea_entered"]
+[connection signal="area_exited" from="StabArea" to="." method="_on_StabArea_exited"]

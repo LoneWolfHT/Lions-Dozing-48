@@ -1,5 +1,4 @@
 extends Button
-# test0
 
 export(String) var button_name = "button_name"
 export(String, FILE, "*.tscn") var load_scene
@@ -16,8 +15,8 @@ func _ready():
 
 	print("[util->buttonpress]: Loaded")
 
-func _on_button_activate(button):
-	print("button default booped: ", button)
+func _on_button_activate(_button):
+	pass
 
 func _on_loadscene_request(scenepath):
 	assert(get_tree().change_scene(scenepath) == OK, "Failed to change scene on buttonpress")
